@@ -48,7 +48,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>{Content.Caption1}</h1>
+      <h1 className="page-caption">{Content.Caption1}</h1>
       <div style={{ textAlign: 'justify' }}>
         {Content.Description}
       </div>

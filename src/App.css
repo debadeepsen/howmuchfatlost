@@ -30,6 +30,14 @@ footer {
   text-align: right;
 }
 
+a {
+  color: var(--teal);
+}
+
+a:hover {
+  color: var(--light-teal);
+}
+
 .App {
   background-color: #fff;
   width: 60vw;
@@ -54,10 +62,13 @@ h5 {
   color: var(--salmon);
 }
 
+h1 {
+  font-weight: 200;
+}
+
 h3 {
   margin: 0;
   margin-bottom: 5px;
-  margin-top: 15px;
   color: var(--salmon-2);
 }
 
@@ -89,7 +100,10 @@ input {
   padding-left: 0px;
   border-radius: 0;
   box-sizing: border-box;
+  transition: all 0.3s;
 }
+
+input
 
 input:focus,
 select:focus {
@@ -148,6 +162,9 @@ button:active {
 .box > div {
   display: flex;
   position: relative;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .row h3 {
@@ -171,6 +188,7 @@ button:active {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 .separator {
@@ -218,4 +236,10 @@ button:active {
   border-bottom: 15px solid #0000;
   border-left: 15px solid #0000;
   transform: translateZ(-3px);
+}
+
+.page-caption {
+  font-size: 2.4rem;
+  font-weight: 200;
+  font-family: 'Montserrat';
 }
