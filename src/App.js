@@ -56,7 +56,8 @@ function App() {
       <h6>{JSON.stringify(weightUnit)}</h6>
       <h6>{JSON.stringify(lengthUnit)}</h6>
       <div className="separator"></div>
-      <h1>{Content.Caption2}</h1>
+
+      <h1 className="wrapped-around">{Content.Caption2}</h1>
       <div>
         <div className="know-you-box">
           <div className="box">
@@ -81,7 +82,8 @@ function App() {
         </div>
       </div>
       <div className="separator"></div>
-      <h1>{Content.Caption3}</h1>
+
+      <h1 className="wrapped-around">{Content.Caption3}</h1>
       <div className="row">
         <div className="box past-box">
           <div>
