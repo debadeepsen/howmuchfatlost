@@ -42,8 +42,14 @@ const Slider = ({ option1, option2, changed }) => {
     return (
         <>
             <div className="parent" onClick={() => slide()}>
-                <div className="option1" style={{ opacity: option1_opacity }}>{option1 && option1.text}</div>
-                <div className="option2" style={{ opacity: option2_opacity }}>{option2 && option2.text}</div>
+                <div className="option1" style={{ opacity: option1_opacity }}>
+                    {option1 && <i className={option1.iconClass}></i>}
+                    {option1 && option1.text}
+                </div>
+                <div className="option2" style={{ opacity: option2_opacity }}>
+                    {option2 && <i className={option2.iconClass}></i>}
+                    {option2 && option2.text}
+                </div>
                 <div className={"switch " + switchClass}>
                     <i className="las la-angle-double-left" style={{ transform: `rotateZ(${arrowRotation}deg)` }}></i>
                 </div>
