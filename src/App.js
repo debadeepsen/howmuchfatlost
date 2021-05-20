@@ -1,19 +1,9 @@
 import { useState } from 'react';
 import './App.css';
 import Slider from './components/Slider';
+import Content from './Content';
 import Lib from './Lib';
-
-/* <select value={gender} onChange={e => setGender(e.target.value)}>
-<option value="M">Male</option>
-<option value="F">Female</option>
-</select>
-
-
-
-<select value={units} onChange={e => }>
-<option value={Lib.METRIC}>{Lib.METRIC}</option>
-<option value={Lib.IMPERIAL}>{Lib.IMPERIAL}</option>
-</select> */
+import Results from './sub_views/Results';
 
 
 function App() {
@@ -30,7 +20,7 @@ function App() {
   const [neckOld, setNeckOld] = useState("");
   const [hipOld, setHipOld] = useState("");
 
-  const [dateNew, setDateNew] = useState("");
+  const [dateNew, setDateNew] = useState(Date());
   const [weightNew, setWeightNew] = useState("");
   const [waistNew, setWaistNew] = useState("");
   const [neckNew, setNeckNew] = useState("");
@@ -45,55 +35,53 @@ function App() {
     let heightUnit = units === Lib.METRIC ? 'cm' : 'in';
     let hipUnit = units === Lib.METRIC ? 'cm' : 'in';
 
-    console.table({ gender, waistOld, waistUnit, neckOld, neckUnit, height, heightUnit, hipOld, hipUnit })
-
     setBfOld(Lib.bodyFatPercentage(gender, waistOld, waistUnit, neckOld, neckUnit, height, heightUnit, hipOld, hipUnit));
     setBfNew(Lib.bodyFatPercentage(gender, waistNew, waistUnit, neckNew, neckUnit, height, heightUnit, hipNew, hipUnit));
   }
 
   const setSelectedUnits = (value) => {
+    console.log('setting units...' + JSON.stringify(value));
     setUnits(value);
-    setWeightUnit(value === Lib.METRIC ? "kg" : "lb");
-    setLengthUnit(value === Lib.METRIC ? "cm" : "in")
+    setWeightUnit(value === Lib.METRIC.value ? "kg" : "lb");
+    setLengthUnit(value === Lib.METRIC.value ? "cm" : "in")
   }
 
   return (
     <div className="App">
-      <h1>How much fat have you lost so far?</h1>
-      <div style={{ textAlign: 'justify' }}>So you've been on a fat loss journey for a while now,
-      and been making progress and also noting down your stats and measurements
-      (hopefully, because otherwise this tool won't work!)
-      When you lose weight, a part of it is lost from fat and some of it from muscle.
-      That proportion varies from person to person, and depends on many factors,
-      like protein intake and how much caloric deficit you're running.
-      Not going into all that, this tool will measure
-      how much body fat you had when you started, and how much you have now.
-      That way, you can get an idea of how much of your hard-earned muscle is
-      being retained, and how much is actually being lost from fat.
+      <h1>{Content.Caption1}</h1>
+      <div style={{ textAlign: 'justify' }}>
+        {Content.Description}
       </div>
-      <h1>First, let's get to know you better</h1>
+      <h6>{JSON.stringify(units)}</h6>
+      <h6>{JSON.stringify(weightUnit)}</h6>
+      <h6>{JSON.stringify(lengthUnit)}</h6>
+      <div className="separator"></div>
+      <h1>{Content.Caption2}</h1>
       <div>
         <div className="know-you-box">
-          <div>
+          <div className="box">
             <h3>Gender:</h3>
             <Slider
               option1={{ text: "Male", value: "M" }}
               option2={{ text: "Female", value: "F" }}
               changed={(selectedOption) => setGender(selectedOption.value)}></Slider>
           </div>
-          <div>
+          <div className="box">
             <h3>Units:</h3>
             <Slider
-              option1={{ text: Lib.METRIC, value: Lib.METRIC }}
-              option2={{ text: Lib.IMPERIAL, value: Lib.IMPERIAL }}
+              option1={{ text: Lib.METRIC.text, value: Lib.METRIC.value }}
+              option2={{ text: Lib.IMPERIAL.text, value: Lib.IMPERIAL.value }}
               changed={(selectedOption) => setSelectedUnits(selectedOption.value)}></Slider>
           </div>
-          <div>
+          <div className="box">
             <h3>Height:</h3>
             <input type="text" value={height} onChange={e => setHeight(e.target.value)}></input>
+            <span className="unit-display">{lengthUnit}</span>
           </div>
         </div>
       </div>
+      <div className="separator"></div>
+      <h1>{Content.Caption3}</h1>
       <div className="row">
         <div className="box past-box">
           <div>
@@ -152,41 +140,8 @@ function App() {
         <button onClick={() => calculate()}>Calculate</button>
       </div>
       <div className="separator"></div>
-      <div>
-        <div>
-          <h3>Old body fat percentage:</h3>
-          {Lib.round(bfOld)}%
-        </div>
-        <div>
-          <h3>New body fat percentage:</h3>
-          {Lib.round(bfNew)}%
-        </div>
-      </div>
-      <div>
-        <div>
-          <h3>Old fat weight:</h3>
-          {Lib.round(bfOld / 100 * weightOld)}
-          <span className="unit-display">{weightUnit}</span>
-        </div>
-        <div>
-          <h3>New fat weight:</h3>
-          {Lib.round(bfNew / 100 * weightNew)}
-          <span className="unit-display">{weightUnit}</span>
-        </div>
-      </div>
-      <div>
-        <div>
-          <h3>Weight lost:</h3>
-          {Lib.round(weightOld - weightNew)}
-          <span className="unit-display">{weightUnit}</span>
-        </div>
-        <div>
-          <h3>Fat lost:</h3>
-          {Lib.round(bfOld / 100 * weightOld - bfNew / 100 * weightNew)}
-          <span className="unit-display">{weightUnit}</span>&nbsp;
-          ({Lib.round((bfOld / 100 * weightOld - bfNew / 100 * weightNew) / (weightOld - weightNew) * 100)}% of weight lost)
-        </div>
-      </div>
+
+      <Results bfOld={bfOld} bfNew={bfNew} weightUnit={weightUnit} weightOld={weightOld} weightNew={weightNew}></Results>
     </div>
   );
 }

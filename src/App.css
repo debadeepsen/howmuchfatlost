@@ -1,4 +1,5 @@
-@import url('https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css');
+
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Montserrat:wght@400&display=swap');
 
 :root {
@@ -13,21 +14,24 @@
 
 * {
   font-family: 'Roboto', sans-serif;
-  transition: all 0.25s;
 }
 
 body {
   font-size: 14px;
-  background-color: #ddd;
+  background-image: url(./assets/images/17545.jpg);
+  backdrop-filter: hue-rotate(-50deg);
+  background-size: cover;
   color: var(--dark-grey);
+  padding: 30px;
 }
 
 .App {
   background-color: #fff;
-  width: 50vw;
-  margin: 30px auto;
+  width: 60vw;
+  margin: 10px auto;
   padding: 30px;
-  box-shadow: 0px 0px 5px var(--shadow);
+  /* box-shadow: 0px 0px 5px var(--shadow); */
+  /* box-shadow: 0px 0px 120px 55px #fff; */
 }
 
 @media screen and (max-width: 1440px) {
@@ -61,7 +65,7 @@ select {
   border: 0;
   width: 100%;
   outline: 0;
-  /* box-shadow: 0px 1px 0px 0px var(--teal); */
+  box-shadow: 0px 1px 0px 0px var(--light-teal-tr);
   padding: 10px;
   padding-left: 0px;
   border-radius: 0;
@@ -76,7 +80,7 @@ input {
   width: 100%;
   border: 0;
   outline: 0;
-  box-shadow: 0px 1px 0px 0px var(--teal);
+  box-shadow: 0px 1px 0px 0px var(--light-teal-tr);
   padding: 10px;
   padding-left: 0px;
   border-radius: 0;
@@ -141,6 +145,7 @@ button:active {
 
 .box > div {
   display: flex;
+  position: relative;
 }
 
 .row h3 {
@@ -157,9 +162,8 @@ button:active {
   justify-content: space-between;
 }
 
-.know-you-box > div {
+.know-you-box > .box {
   width: 32%;
-  box-shadow: 1px 1px 3px var(--shadow);
   padding: 20px;
   box-sizing: border-box;
   display: flex;
@@ -168,8 +172,14 @@ button:active {
 }
 
 .separator {
-  margin: 15px 0px;
+  margin: 25px 0px;
   height: 1px;
-  background-color: #eee;
-  border-top: 1px solid #ccc;
+  /* background-color: var(--teal); */
+  border-top: 1px dotted var(--teal);
+}
+
+.unit-display {
+  position: absolute;
+  right: 3px;
+  top: 8px;
 }

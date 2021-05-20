@@ -1,6 +1,22 @@
 const Lib = {
-    METRIC: "Metric",
-    IMPERIAL: "Imperial",
+    METRIC: {
+        text: "Metric",
+        value: "MT"
+    },
+    IMPERIAL: {
+        text: "Imperial",
+        value: "IP"
+    },
+
+    MALE: {
+        text: "Male",
+        value: "M"
+    },
+    FEMALE: {
+        text: "Female",
+        value: "F"
+    },
+    
     bodyFatPercentage: (gender, waist, waistUnit, neck, neckUnit, height, heightUnit, hip, hipUnit) => {
 
         if (waistUnit === 'in') {

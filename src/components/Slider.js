@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './Slider.css';
 
-const SWITCH_CLASSES={
+const SWITCH_CLASSES = {
     LEFT: "switch-left",
     RIGHT: "switch-right"
 }
@@ -11,6 +11,8 @@ const Slider = ({ option1, option2, changed }) => {
 
     const [option1_opacity, setOption1_opacity] = useState(1);
     const [option2_opacity, setOption2_opacity] = useState(0);
+
+    const [arrowRotation, setArrowRotation] = useState(0);
 
     const [selectedOption, setSelectedOption] = useState(null);
 
@@ -22,16 +24,18 @@ const Slider = ({ option1, option2, changed }) => {
         if (switchClass === SWITCH_CLASSES.RIGHT) {
             setSelectedOption(option2);
             setSwitchClass(SWITCH_CLASSES.LEFT);
+            setArrowRotation(180);
             setOption1_opacity(0);
             setOption2_opacity(1);
-            changed && changed(selectedOption);
+            changed && changed(option2);
         }
         else {
             setSelectedOption(option1);
             setSwitchClass(SWITCH_CLASSES.RIGHT);
+            setArrowRotation(0);
             setOption1_opacity(1);
             setOption2_opacity(0);
-            changed && changed(selectedOption);
+            changed && changed(option1);
         }
     }
 
@@ -40,7 +44,9 @@ const Slider = ({ option1, option2, changed }) => {
             <div className="parent" onClick={() => slide()}>
                 <div className="option1" style={{ opacity: option1_opacity }}>{option1 && option1.text}</div>
                 <div className="option2" style={{ opacity: option2_opacity }}>{option2 && option2.text}</div>
-                <div className={"switch " + switchClass}></div>
+                <div className={"switch " + switchClass}>
+                    <i className="las la-angle-double-left" style={{ transform: `rotateZ(${arrowRotation}deg)` }}></i>
+                </div>
             </div>
         </>
     )
