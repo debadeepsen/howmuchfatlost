@@ -1,6 +1,20 @@
 import { useState } from 'react';
 import './App.css';
+import Slider from './components/Slider';
 import Lib from './Lib';
+
+/* <select value={gender} onChange={e => setGender(e.target.value)}>
+<option value="M">Male</option>
+<option value="F">Female</option>
+</select>
+
+
+
+<select value={units} onChange={e => }>
+<option value={Lib.METRIC}>{Lib.METRIC}</option>
+<option value={Lib.IMPERIAL}>{Lib.IMPERIAL}</option>
+</select> */
+
 
 function App() {
 
@@ -35,32 +49,44 @@ function App() {
 
     setBfOld(Lib.bodyFatPercentage(gender, waistOld, waistUnit, neckOld, neckUnit, height, heightUnit, hipOld, hipUnit));
     setBfNew(Lib.bodyFatPercentage(gender, waistNew, waistUnit, neckNew, neckUnit, height, heightUnit, hipNew, hipUnit));
+  }
 
-
-
+  const setSelectedUnits = (value) => {
+    setUnits(value);
+    setWeightUnit(value === Lib.METRIC ? "kg" : "lb");
+    setLengthUnit(value === Lib.METRIC ? "cm" : "in")
   }
 
   return (
     <div className="App">
+      <h1>How much fat have you lost so far?</h1>
+      <div style={{ textAlign: 'justify' }}>So you've been on a fat loss journey for a while now,
+      and been making progress and also noting down your stats and measurements
+      (hopefully, because otherwise this tool won't work!)
+      When you lose weight, a part of it is lost from fat and some of it from muscle.
+      That proportion varies from person to person, and depends on many factors,
+      like protein intake and how much caloric deficit you're running.
+      Not going into all that, this tool will measure
+      how much body fat you had when you started, and how much you have now.
+      That way, you can get an idea of how much of your hard-earned muscle is
+      being retained, and how much is actually being lost from fat.
+      </div>
+      <h1>First, let's get to know you better</h1>
       <div>
-        <div>
+        <div className="know-you-box">
           <div>
             <h3>Gender:</h3>
-            <select value={gender} onChange={e => setGender(e.target.value)}>
-              <option value="M">Male</option>
-              <option value="F">Female</option>
-            </select>
+            <Slider
+              option1={{ text: "Male", value: "M" }}
+              option2={{ text: "Female", value: "F" }}
+              changed={(selectedOption) => setGender(selectedOption.value)}></Slider>
           </div>
           <div>
             <h3>Units:</h3>
-            <select value={units} onChange={e => {
-              setUnits(e.target.value);
-              setWeightUnit(e.target.value === Lib.METRIC ? "kg" : "lb");
-              setLengthUnit(e.target.value === Lib.METRIC ? "cm" : "in")
-            }}>
-              <option value={Lib.METRIC}>{Lib.METRIC}</option>
-              <option value={Lib.IMPERIAL}>{Lib.IMPERIAL}</option>
-            </select>
+            <Slider
+              option1={{ text: Lib.METRIC, value: Lib.METRIC }}
+              option2={{ text: Lib.IMPERIAL, value: Lib.IMPERIAL }}
+              changed={(selectedOption) => setSelectedUnits(selectedOption.value)}></Slider>
           </div>
           <div>
             <h3>Height:</h3>
@@ -125,7 +151,7 @@ function App() {
       <div style={{ textAlign: 'center', marginTop: 30 }}>
         <button onClick={() => calculate()}>Calculate</button>
       </div>
-      <hr></hr>
+      <div className="separator"></div>
       <div>
         <div>
           <h3>Old body fat percentage:</h3>
