@@ -2,9 +2,10 @@ import { useState } from 'react';
 import './App.css';
 import Slider from './components/Slider';
 import Content from './assets/content/Content';
-import Lib from './Lib';
-import Constants from './Constants';
+import Lib from './helpers/Lib';
+import Constants from './helpers/Constants';
 import Results from './sub_views/Results';
+import StatsForm from './components/StatsForm';
 
 
 function App() {
@@ -79,6 +80,12 @@ function App() {
           <i className="fa fa-th-list"></i>
           {Content.Caption3}
         </h1>
+        <hr></hr>
+        <div className="row">
+          <StatsForm></StatsForm>
+          <StatsForm></StatsForm>
+        </div>
+        <hr></hr>
         <div className="row">
           <div className="box past-box">
             <div>

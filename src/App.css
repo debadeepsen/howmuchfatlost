@@ -40,6 +40,18 @@ a:hover {
   color: var(--light-teal);
 }
 
+
+
+/* ::-webkit-datetime-edit { padding: 1em; } */
+::-webkit-datetime-edit-fields-wrapper {  }
+::-webkit-datetime-edit-text {  }
+::-webkit-datetime-edit-month-field {  }
+::-webkit-datetime-edit-day-field {  }
+::-webkit-datetime-edit-year-field {  }
+::-webkit-inner-spin-button { display: inline-block; }
+::-webkit-calendar-picker-indicator { color:var(--teal); }
+
+
 .App {
   background-color: #fff;
   width: 60vw;

@@ -1,4 +1,4 @@
-import Lib from '../Lib';
+import Lib from '../helpers/Lib';
 
 const Results = ({ bfOld, bfNew, weightUnit, weightOld, weightNew }) => {
 
