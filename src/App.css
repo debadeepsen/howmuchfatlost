@@ -10,7 +10,10 @@
   --salmon-tr: #eb815060;
   --salmon-2: #ec9c77;
   --faded-salmon: #e9c0ad;
+  --light-grey: #9a9a9a;
+  --lighter-grey: #797979;
   --dark-grey: #686868;
+  --darker-grey: #454545;
   --shadow: #1115;
   --shadow-dark: #111a;
 }
@@ -133,9 +136,15 @@ button {
   background: linear-gradient(145deg, var(--teal), teal);
   color: #fff;
   border: 0;
-  padding: 20px 40px;
-  font-size: 1.1rem;
+  padding: 15px 30px;
+  font-size: 1rem;
   cursor: pointer;
+  margin-right: 15px;
+  min-width: 150px;
+}
+
+button i.las {
+  font-size: 1.2rem;
 }
 
 button:hover {
@@ -149,6 +158,14 @@ button:active {
   transform: scale(1.1);
   background-color: var(--light-teal-tr);
   box-shadow: 0px 0px 10px var(--shadow);
+}
+
+button.reset-btn {
+  background: linear-gradient(145deg, var(--dark-grey), var(--darker-grey));
+}
+
+button.reset-btn:hover {
+  background: linear-gradient(145deg, var(--light-grey), var(--dark-grey));
 }
 
 .note {

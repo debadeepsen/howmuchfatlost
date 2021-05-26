@@ -37,6 +37,14 @@ function App() {
 
     let bodyFatNew = Lib.bodyFatPercentage(gender, height, heightUnit, newStats);
     setBodyFatPercent(Constants.NEW, bodyFatNew);
+
+    setResultsAvailable(true);
+  }
+
+  const reset = () => {
+    setOldStats({});
+    setNewStats({});
+    setResultsAvailable(false);
   }
 
   return (
@@ -84,7 +92,8 @@ function App() {
           <StatsForm formId="newStats" statChanged={(stats) => setNewStats(stats)}></StatsForm>
         </div>
         <div style={{ marginTop: 30 }}>
-          <button onClick={() => calculate()}>Calculate</button>
+          <button onClick={() => calculate()}><i class="las la-calculator"></i> Calculate</button>
+          <button className="reset-btn" onClick={() => reset()}><i class="las la-redo-alt"></i> Reset</button>
         </div>
 
         <h1 className="wrapped-around">
