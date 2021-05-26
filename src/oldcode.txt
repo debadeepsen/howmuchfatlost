@@ -1,0 +1,87 @@
+
+        <div className="row">
+        <div className="box past-box">
+          <div>
+            <h3>Date:</h3>
+            <input type="date" value={dateOld} onChange={e => setDateOld(e.target.value)}></input>
+          </div>
+          <div>
+            <h3>Weight:</h3>
+            <input type="text" value={weightOld} onChange={e => setWeightOld(e.target.value)}></input>
+            <Slider
+              width={65}
+              option1={{ text: Constants.KILOGRAM, value: Constants.KILOGRAM }}
+              option2={{ text: Constants.POUND, value: Constants.POUND }}
+              changed={(selectedOption) => setWeightUnit(selectedOption.value)}></Slider>
+          </div>
+          <div>
+            <h3>Waist:</h3>
+            <input type="text" value={waistOld} onChange={e => setWaistOld(e.target.value)}></input>
+            <Slider
+              width={65}
+              option1={{ text: Constants.CENTIMETER, value: Constants.CENTIMETER }}
+              option2={{ text: Constants.INCH, value: Constants.INCH }}
+              changed={(selectedOption) => setWaistUnit(selectedOption.value)}></Slider>
+          </div>
+          <div>
+            <h3>Neck:</h3>
+            <input type="text" value={neckOld} onChange={e => setNeckOld(e.target.value)}></input>
+            <Slider
+              width={65}
+              option1={{ text: Constants.CENTIMETER, value: Constants.CENTIMETER }}
+              option2={{ text: Constants.INCH, value: Constants.INCH }}
+              changed={(selectedOption) => setNeckUnit(selectedOption.value)}></Slider>
+          </div>
+          <div>
+            <h3>Hip:</h3>
+            <input type="text" value={hipOld} onChange={e => setHipOld(e.target.value)}></input>
+            <Slider
+              width={65}
+              option1={{ text: Constants.CENTIMETER, value: Constants.CENTIMETER }}
+              option2={{ text: Constants.INCH, value: Constants.INCH }}
+              changed={(selectedOption) => setHipUnit(selectedOption.value)}></Slider>
+          </div>
+        </div>
+        <div className="box present-box">
+          <div>
+            <h3>Date:</h3>
+            <input type="date" value={dateNew} onChange={e => setDateNew(e.target.value)}></input>
+          </div>
+          <div>
+            <h3>Weight:</h3>
+            <input type="text" value={weightNew} onChange={e => setWeightNew(e.target.value)}></input>
+            <Slider
+              width={65}
+              option1={{ text: Constants.KILOGRAM, value: Constants.KILOGRAM }}
+              option2={{ text: Constants.POUND, value: Constants.POUND }}
+              changed={(selectedOption) => setWeightUnit(selectedOption.value)}></Slider>
+          </div>
+          <div>
+            <h3>Waist:</h3>
+            <input type="text" value={waistNew} onChange={e => setWaistNew(e.target.value)}></input>
+            <Slider
+              width={65}
+              option1={{ text: Constants.CENTIMETER, value: Constants.CENTIMETER }}
+              option2={{ text: Constants.INCH, value: Constants.INCH }}
+              changed={(selectedOption) => setWaistUnit(selectedOption.value)}></Slider>
+          </div>
+          <div>
+            <h3>Neck:</h3>
+            <input type="text" value={neckNew} onChange={e => setNeckNew(e.target.value)}></input>
+            <Slider
+              width={65}
+              option1={{ text: Constants.CENTIMETER, value: Constants.CENTIMETER }}
+              option2={{ text: Constants.INCH, value: Constants.INCH }}
+              changed={(selectedOption) => setNeckUnit(selectedOption.value)}></Slider>
+          </div>
+          <div>
+            <h3>Hip:</h3>
+            <input type="text" value={hipNew} onChange={e => setHipNew(e.target.value)}></input>
+            <Slider
+              width={65}
+              option1={{ text: Constants.CENTIMETER, value: Constants.CENTIMETER }}
+              option2={{ text: Constants.INCH, value: Constants.INCH }}
+              changed={(selectedOption) => setHipUnit(selectedOption.value)}></Slider>
+          </div>
+        </div>
+      </div>
