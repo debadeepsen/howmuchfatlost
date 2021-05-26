@@ -12,33 +12,50 @@ function App() {
 
   const [gender, setGender] = useState(Constants.MALE.value);
   const [height, setHeight] = useState("");
-
-  const [weightUnit, setWeightUnit] = useState(Constants.KILOGRAM);
-  const [waistUnit, setWaistUnit] = useState(Constants.CENTIMETER);
-  const [neckUnit, setNeckUnit] = useState(Constants.CENTIMETER);
   const [heightUnit, setHeightUnit] = useState(Constants.CENTIMETER);
-  const [hipUnit, setHipUnit] = useState(Constants.CENTIMETER);
+
+  // const [weightUnitOld, setWeightUnitOld] = useState(Constants.KILOGRAM);
+  // const [weightUnitNew, setWeightUnitNew] = useState(Constants.KILOGRAM);
+  // const [waistUnitOld, setWaistUnitOld] = useState(Constants.CENTIMETER);
+  // const [waistUnitNew, setWaistUnitNew] = useState(Constants.CENTIMETER);
+  // const [neckUnit, setNeckUnit] = useState(Constants.CENTIMETER);
+  // const [hipUnit, setHipUnit] = useState(Constants.CENTIMETER);
 
 
-  const [dateOld, setDateOld] = useState("");
-  const [weightOld, setWeightOld] = useState("");
-  const [waistOld, setWaistOld] = useState("");
-  const [neckOld, setNeckOld] = useState("");
-  const [hipOld, setHipOld] = useState("");
+  // const [dateOld, setDateOld] = useState("");
+  // const [weightOld, setWeightOld] = useState("");
+  // const [oldStats.waist, setoldStats.waist] = useState("");
+  // const [oldStats.neck, setoldStats.neck] = useState("");
+  // const [hipOld, setHipOld] = useState("");
 
-  const [dateNew, setDateNew] = useState(Date());
-  const [weightNew, setWeightNew] = useState("");
-  const [waistNew, setWaistNew] = useState("");
-  const [neckNew, setNeckNew] = useState("");
-  const [hipNew, setHipNew] = useState("");
+  // const [dateNew, setDateNew] = useState(Date());
+  // const [weightNew, setWeightNew] = useState("");
+  // const [waistNew, setWaistNew] = useState("");
+  // const [neckNew, setNeckNew] = useState("");
+  // const [hipNew, setHipNew] = useState("");
 
-  const [bfOld, setBfOld] = useState(0);
-  const [bfNew, setBfNew] = useState(0);
+  const [oldStats, setOldStats] = useState({});
+  const [newStats, setNewStats] = useState({});
+
+  const setBodyFatPercent = (type, value) => {
+    if (type === "old") {
+      let clone = JSON.parse(JSON.stringify(oldStats));
+      clone.bodyFatPercentage = value;
+      setOldStats(clone);
+    }
+    else {
+      let clone = JSON.parse(JSON.stringify(newStats));
+      clone.bodyFatPercentage = value;
+      setNewStats(clone);
+    }
+  }
 
   const calculate = () => {
+    let bodyFatOld = Lib.bodyFatPercentage(gender, height, heightUnit, oldStats);
+    setBodyFatPercent("old", bodyFatOld);
 
-    setBfOld(Lib.bodyFatPercentage(gender, waistOld, waistUnit, neckOld, neckUnit, height, heightUnit, hipOld, hipUnit));
-    setBfNew(Lib.bodyFatPercentage(gender, waistNew, waistUnit, neckNew, neckUnit, height, heightUnit, hipNew, hipUnit));
+    let bodyFatNew = Lib.bodyFatPercentage(gender, height, heightUnit, newStats);
+    setBodyFatPercent("new", bodyFatNew);
   }
 
   return (
@@ -81,8 +98,8 @@ function App() {
           {Content.Caption3}
         </h1>
         <div className="row">
-          <StatsForm></StatsForm>
-          <StatsForm></StatsForm>
+          <StatsForm formId="oldStats" statChanged={(stats) => setOldStats(stats)}></StatsForm>
+          <StatsForm formId="newStats" statChanged={(stats) => setNewStats(stats)}></StatsForm>
         </div>
         <div style={{ marginTop: 30 }}>
           <button onClick={() => calculate()}>Calculate</button>
@@ -92,7 +109,7 @@ function App() {
           <i className="fa fa-bar-chart"></i>
           {Content.Results}
         </h1>
-        <Results bfOld={bfOld} bfNew={bfNew} weightUnit={weightUnit} weightOld={weightOld} weightNew={weightNew}></Results>
+        <Results oldStats={oldStats} newStats={newStats}></Results>
       </div>
     </div>
   );
