@@ -22,7 +22,9 @@ const Constants = {
     POUND: "lb",
     INCH: "in",
     FEET: "ft",
-    CENTIMETER: "cm"
+    CENTIMETER: "cm",
+    OLD: "old",
+    NEW: "new"
 };
 
 export default Constants;

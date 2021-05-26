@@ -14,31 +14,11 @@ function App() {
   const [height, setHeight] = useState("");
   const [heightUnit, setHeightUnit] = useState(Constants.CENTIMETER);
 
-  // const [weightUnitOld, setWeightUnitOld] = useState(Constants.KILOGRAM);
-  // const [weightUnitNew, setWeightUnitNew] = useState(Constants.KILOGRAM);
-  // const [waistUnitOld, setWaistUnitOld] = useState(Constants.CENTIMETER);
-  // const [waistUnitNew, setWaistUnitNew] = useState(Constants.CENTIMETER);
-  // const [neckUnit, setNeckUnit] = useState(Constants.CENTIMETER);
-  // const [hipUnit, setHipUnit] = useState(Constants.CENTIMETER);
-
-
-  // const [dateOld, setDateOld] = useState("");
-  // const [weightOld, setWeightOld] = useState("");
-  // const [oldStats.waist, setoldStats.waist] = useState("");
-  // const [oldStats.neck, setoldStats.neck] = useState("");
-  // const [hipOld, setHipOld] = useState("");
-
-  // const [dateNew, setDateNew] = useState(Date());
-  // const [weightNew, setWeightNew] = useState("");
-  // const [waistNew, setWaistNew] = useState("");
-  // const [neckNew, setNeckNew] = useState("");
-  // const [hipNew, setHipNew] = useState("");
-
   const [oldStats, setOldStats] = useState({});
   const [newStats, setNewStats] = useState({});
 
   const setBodyFatPercent = (type, value) => {
-    if (type === "old") {
+    if (type === Constants.OLD) {
       let clone = JSON.parse(JSON.stringify(oldStats));
       clone.bodyFatPercentage = value;
       setOldStats(clone);
@@ -52,12 +32,10 @@ function App() {
 
   const calculate = () => {
     let bodyFatOld = Lib.bodyFatPercentage(gender, height, heightUnit, oldStats);
-    setBodyFatPercent("old", bodyFatOld);
+    setBodyFatPercent(Constants.OLD, bodyFatOld);
 
     let bodyFatNew = Lib.bodyFatPercentage(gender, height, heightUnit, newStats);
-    setBodyFatPercent("new", bodyFatNew);
-
-    console.log({ bodyFatOld, bodyFatNew });
+    setBodyFatPercent(Constants.NEW, bodyFatNew);
   }
 
   return (
