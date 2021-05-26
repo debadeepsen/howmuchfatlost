@@ -16,6 +16,7 @@ function App() {
 
   const [oldStats, setOldStats] = useState({});
   const [newStats, setNewStats] = useState({});
+  const [resultsAvailable, setResultsAvailable] = useState(false);
 
   const setBodyFatPercent = (type, value) => {
     if (type === Constants.OLD) {
@@ -46,6 +47,7 @@ function App() {
         <div className="description">
           {Content.Description}
         </div>
+        <div className="note" dangerouslySetInnerHTML={{ __html: Content.Source }}></div>
 
         <h1 className="wrapped-around">
           <i className="fa fa-question-circle"></i>
@@ -84,15 +86,17 @@ function App() {
         <div style={{ marginTop: 30 }}>
           <button onClick={() => calculate()}>Calculate</button>
         </div>
-        <hr></hr>
-        {JSON.stringify({ oldStats, newStats })}
-        <hr></hr>
 
         <h1 className="wrapped-around">
           <i className="fa fa-bar-chart"></i>
           {Content.Results}
         </h1>
-        <Results oldStats={oldStats} newStats={newStats}></Results>
+        {
+          resultsAvailable ?
+            <Results oldStats={oldStats} newStats={newStats}></Results>
+            :
+            <div>Press the "Calculate" button above to get your results.</div>
+        }
       </div>
     </div>
   );

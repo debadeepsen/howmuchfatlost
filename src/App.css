@@ -5,6 +5,7 @@
   --teal-tr: #11a77e60;
   --light-teal: #08c9c9;
   --light-teal-tr: #08c9c995;
+  --very-light-teal-tr: #08c9c940;
   --salmon: #eb8150;
   --salmon-tr: #eb815060;
   --salmon-2: #ec9c77;
@@ -66,6 +67,10 @@ a:hover {
   .App {
     width: 80vw;
   }
+}
+
+a {
+  cursor: pointer;
 }
 
 h1,
@@ -144,6 +149,13 @@ button:active {
   transform: scale(1.1);
   background-color: var(--light-teal-tr);
   box-shadow: 0px 0px 10px var(--shadow);
+}
+
+.note {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: var(--very-light-teal-tr);
+  border-left: 3px solid var(--light-teal);
 }
 
 .description {
