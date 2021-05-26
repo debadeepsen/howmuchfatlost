@@ -7,20 +7,20 @@ const StatsForm = ({ formId, statChanged }) => {
     const [stats, setStats] = useState({
         date: "",
         weight: "",
-        weightUnit: "",
+        weightUnit: Constants.KILOGRAM,
         waist: "",
-        waistUnit: "",
+        waistUnit: Constants.CENTIMETER,
         neck: "",
-        neckUnit: "",
+        neckUnit: Constants.CENTIMETER,
         hip: "",
-        hipUnit: ""
+        hipUnit: Constants.CENTIMETER
     });
 
     const setStatsProperty = (property, value) => {
         let clone = JSON.parse(JSON.stringify(stats));
         clone[property] = value;
         setStats(clone);
-        statChanged(stats);
+        statChanged(clone);
     }
 
     return (

@@ -21,6 +21,7 @@ const Constants = {
     KILOGRAM: "kg",
     POUND: "lb",
     INCH: "in",
+    FEET: "ft",
     CENTIMETER: "cm"
 };
 

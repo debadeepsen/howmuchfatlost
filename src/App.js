@@ -56,6 +56,8 @@ function App() {
 
     let bodyFatNew = Lib.bodyFatPercentage(gender, height, heightUnit, newStats);
     setBodyFatPercent("new", bodyFatNew);
+
+    console.log({ bodyFatOld, bodyFatNew });
   }
 
   return (
@@ -104,6 +106,9 @@ function App() {
         <div style={{ marginTop: 30 }}>
           <button onClick={() => calculate()}>Calculate</button>
         </div>
+        <hr></hr>
+        {JSON.stringify({ oldStats, newStats })}
+        <hr></hr>
 
         <h1 className="wrapped-around">
           <i className="fa fa-bar-chart"></i>
