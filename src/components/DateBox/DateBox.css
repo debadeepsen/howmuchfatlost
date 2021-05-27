@@ -1,0 +1,25 @@
+.date-box {
+  border: 1px solid;
+  text-align: center;
+  margin-right: 5px;
+}
+
+.date-box > div {
+    border-radius: 0px;
+}
+
+.D {
+  font-size: 1.3rem;
+  padding: 4px;
+}
+
+.M {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  padding: 1px 6px 0px 6px;
+}
+
+.Y {
+  font-size: 0.7rem;
+  padding: 0px 6px 1px 6px;
+}

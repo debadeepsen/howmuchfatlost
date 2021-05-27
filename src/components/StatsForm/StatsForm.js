@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Constants from '../helpers/Constants';
-import Slider from './Slider';
+import Constants from '../../helpers/Constants';
+import Slider from '../Slider/Slider';
 
 const StatsForm = ({ formId, statChanged }) => {
 

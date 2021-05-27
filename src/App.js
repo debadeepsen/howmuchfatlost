@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import './App.css';
-import Slider from './components/Slider';
+import Slider from './components/Slider/Slider';
 import Content from './assets/content/Content';
 import Lib from './helpers/Lib';
 import Constants from './helpers/Constants';
-import Results from './sub_views/Results';
-import StatsForm from './components/StatsForm';
+import Results from './components/Results/Results';
+import StatsForm from './components/StatsForm/StatsForm';
 
 
 function App() {
@@ -66,7 +66,7 @@ function App() {
             <div className="box">
               <h3>Gender:</h3>
               <Slider
-                width={125}
+                width={120}
                 option1={{ text: "Male", value: "M", iconClass: "fa fa-male" }}
                 option2={{ text: "Female", value: "F", iconClass: "fa fa-female" }}
                 changed={(selectedOption) => setGender(selectedOption.value)}></Slider>
@@ -92,8 +92,8 @@ function App() {
           <StatsForm formId="newStats" statChanged={(stats) => setNewStats(stats)}></StatsForm>
         </div>
         <div style={{ marginTop: 30 }}>
-          <button onClick={() => calculate()}><i class="las la-calculator"></i> Calculate</button>
-          <button className="reset-btn" onClick={() => reset()}><i class="las la-redo-alt"></i> Reset</button>
+          <button onClick={() => calculate()}><i className="las la-calculator"></i> Calculate</button>
+          <button className="reset-btn" onClick={() => reset()}><i className="las la-redo-alt"></i> Reset</button>
         </div>
 
         <h1 className="wrapped-around">

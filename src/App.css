@@ -5,7 +5,7 @@
   --teal-tr: #11a77e60;
   --light-teal: #08c9c9;
   --light-teal-tr: #08c9c995;
-  --very-light-teal-tr: #08c9c940;
+  --very-light-teal-tr: #08c9c920;
   --salmon: #eb8150;
   --salmon-tr: #eb815060;
   --salmon-2: #ec9c77;
@@ -25,6 +25,7 @@
 body {
   font-size: 14px;
   background-image: url(./assets/images/17545.jpg);
+  background-attachment: fixed;
   backdrop-filter: hue-rotate(-50deg);
   background-size: cover;
   color: var(--dark-grey);
