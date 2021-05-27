@@ -31,6 +31,8 @@ const Results = ({ oldStats, newStats }) => {
                         You weighed <span className="highlight" style={{ background: '#fff', color: OLD_COLOR }}>{oldStats.weight} {weightUnit}</span>
                         with <span className="highlight" style={{ background: '#fff', color: OLD_COLOR }}>{Lib.round(oldStats.bodyFatPercentage)}%</span> body fat
                     </div>
+                </div>
+                <div className="result-row">
                     <DateBox date={newStats.date ? newStats.date : 'Day 2'} color={NEW_COLOR}></DateBox>
                     <div className="box" style={{ background: NEW_COLOR }}>
                         You weighed <span className="highlight" style={{ background: '#fff', color: NEW_COLOR }}>{newStats.weight} {weightUnit}</span>
@@ -38,104 +40,17 @@ const Results = ({ oldStats, newStats }) => {
                     </div>
                 </div>
                 <div className="result-row">
-                    <div className="box" style={{ background: RESULT_COLOR, padding: 30 }}>
+                    <div className="box" style={{ background: RESULT_COLOR, padding: 20 }}>
                         You lost  <span className="highlight" style={{ background: '#fff', color: RESULT_COLOR }}>
-                            {Lib.round(oldStats.weight - newStats.weight)}{weightUnit}
-                        </span> of which
+                            {Lib.round(oldStats.weight - newStats.weight)}&nbsp;{weightUnit}
+                        </span> out of which
                         <span className="highlight" style={{ background: '#fff', color: RESULT_COLOR }}>
-                            {Lib.round(oldStats.bodyFatPercentage / 100 * oldStats.weight - newStats.bodyFatPercentage / 100 * newStats.weight)}
-                            {oldStats.weightUnit}&nbsp;
+                            {Lib.round(oldStats.bodyFatPercentage / 100 * oldStats.weight - newStats.bodyFatPercentage / 100 * newStats.weight)}&nbsp;
+                            {weightUnit}&nbsp;
                             ({Lib.round((oldStats.bodyFatPercentage / 100 * oldStats.weight - newStats.bodyFatPercentage / 100 * newStats.weight) / (oldStats.weight - newStats.weight) * 100)}%)
                         </span>
                         was fat
                     </div>
-                </div>
-            </div>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <hr></hr>
-            <hr></hr>
-            <hr></hr>
-            <hr></hr>
-            <hr></hr>
-            <hr></hr>
-            <hr></hr>
-            <hr></hr>
-            <hr></hr>
-            <hr></hr>
-            <hr></hr>
-            <hr></hr>
-            <hr></hr>
-            <hr></hr>
-            <hr></hr>
-            <hr></hr>
-            <div>
-                <div>
-                    <h3>Old body fat percentage:</h3>
-                    {Lib.round(oldStats.bodyFatPercentage)}%
-                </div>
-                <div>
-                    <h3>New body fat percentage:</h3>
-                    {Lib.round(newStats.bodyFatPercentage)}%
-                </div>
-            </div>
-            <div>
-                <div>
-                    <h3>Old fat weight:</h3>
-                    {Lib.round(oldStats.bodyFatPercentage / 100 * oldStats.weight)}
-                    {oldStats.weightUnit}
-                </div>
-                <div>
-                    <h3>New fat weight:</h3>
-                    {Lib.round(newStats.bodyFatPercentage / 100 * newStats.weight)}
-                    {oldStats.weightUnit}
-                </div>
-            </div>
-            <div>
-                <div>
-                    <h3>Weight lost:</h3>
-                    {Lib.round(oldStats.weight - newStats.weight)}
-                    {oldStats.weightUnit}
-                </div>
-                <div>
-                    <h3>Fat lost:</h3>
-                    {Lib.round(oldStats.bodyFatPercentage / 100 * oldStats.weight - newStats.bodyFatPercentage / 100 * newStats.weight)}
-                    {oldStats.weightUnit}&nbsp;
-                    ({Lib.round((oldStats.bodyFatPercentage / 100 * oldStats.weight - newStats.bodyFatPercentage / 100 * newStats.weight) / (oldStats.weight - newStats.weight) * 100)}% of weight lost)
                 </div>
             </div>
         </div>
